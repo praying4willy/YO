@@ -1,0 +1,20 @@
+int count = 5;
+color[] colors = {color(255, 0, 0), color(0, 255, 0), color(0, 0, 255), color(255, 255, 0), color(0, 255, 255)};
+
+void setup() {
+  size(400, 400);
+  frameRate(1); // Cambia el fondo cada segundo
+}
+
+void draw() {
+  if (count >= 0) {
+    background(colors[count % colors.length]);
+    fill(255);
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    text(count, width / 2, height / 2);
+    count--;
+  } else {
+    noLoop(); // Detiene el bucle cuando la cuenta llega a 0
+  }
+}
