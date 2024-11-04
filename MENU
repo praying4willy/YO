@@ -1,0 +1,145 @@
+int x= 160;
+int y= 160;
+
+void main() {
+ animate (ejecutar);
+}
+
+void ejecutar() {
+  fondo();
+  control();
+  play();
+}
+
+
+void fondo() {
+ image("https://us.123rf.com/450wm/sombrecanari/sombrecanari2304/sombrecanari230400126/203392697-men%C3%BA-de-juego-panel-de-marco-de-madera-texturizado-con-tabla-colgante-de-cuerda-en-estilo-de-dibujos.jpg",0,0,320,320);
+ image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(16).png?raw=true",65,25,200,180);
+ image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/823457508100c369d2387e74f510b96d1432991d/IMAGEN/pixil-frame-0%20(1).png?raw=true",65,170,200,180);
+ image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(8).png?raw=true",-26,247,100,100);
+ image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(10).png?raw=true",-20,190,100,100);
+}
+  void control() { 
+  print("X: " +mouseX);
+  println("Y: " +mouseY);
+  if (mouseX >82 && mouseX <250)
+    if (mouseY >80 && mouseY <135) { 
+    image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(3).png?raw=true",65,25,200,180);
+  }
+  if (mouseX >80 && mouseX <250)
+    if (mouseY >225 && mouseY <275) { 
+  image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(2).png?raw=true",65,170,200,180);
+    }
+   if (mouseX >6 && mouseX <45)
+    if (mouseY >270 && mouseY <310) {
+  image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(9).png?raw=true",-26,247,100,100); 
+   }
+  if (mouseX >6 && mouseX <55)
+    if (mouseY >227 && mouseY <257) { 
+    image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(11).png?raw=true",-20,190,100,100);
+   } }
+
+void play() {
+   if (mousePressed)
+  if (mouseX >82 && mouseX <250)
+    if (mouseY >80 && mouseY <135)
+    if(mousePressed) {
+    if(mouseButton == LEFTBUTTON){
+      animate(fondo1);
+    } } 
+  if (mousePressed)
+  if (mouseX >82 && mouseX <250)
+    if (mouseY >225 && mouseY <275)
+    if(mousePressed) {
+    if(mouseButton == LEFTBUTTON){
+      animate(fondo2);
+}  }  
+  if (mousePressed)
+  if (mouseX >6 && mouseX <45)
+    if (mouseY >270 && mouseY <310)
+    if(mousePressed) {
+    if(mouseButton == LEFTBUTTON){
+      animate(fondo3);
+}  }
+  if (mousePressed)
+  if (mouseX >6 && mouseX <55)
+    if (mouseY >227 && mouseY <257)
+    if(mousePressed) {
+    if(mouseButton == LEFTBUTTON){
+      animate(fondo4);
+}  }  }
+ 
+  void fondo1() {
+    animate (player);
+    if (mousePressed)
+  if (mouseX >5 && mouseX <40)
+    if (mouseY >5 && mouseY <40)
+    if(mousePressed) {
+    if(mouseButton == LEFTBUTTON){
+    animate(ejecutar);
+    }  } }
+
+void fondo2() {
+  background(255,255,255);
+  text("By Chema De Huevo",75,140);
+  fill(0,0,0);
+  salir();
+}
+
+void fondo3() {
+  background(255,255,255);
+  text("Seleccionar: LeftButton",70,140);
+  fill(84,14,116);
+  text("Salir: RightButton",90,170);
+  fill(84,14,116);
+  salir();
+  }
+
+void fondo4() {
+  background(0,78,215);
+  text("rancking",60,60);
+  salir();
+ }
+
+void name() {
+  
+}
+
+void player() {
+  background(255,255,255);
+ image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(12).png?raw=true",x,y,120,120);
+  controles();
+  salir();
+}
+
+void controles() {
+  if (keyPressed && key=="w") {
+    y = y -4;}
+  if (keyPressed && key=="s") {
+    y = y +4;}
+  if (keyPressed && key=="a") {
+    x = x -4;}
+  if (keyPressed && key=="d") {
+    x = x +4;}
+  if (y<-75){
+    y=320;}
+  if (x==0){
+    x=320;}
+  if (y > 320){
+    y=-70;}
+  if (x > 320){
+    x=0;}
+}
+
+void salir(){
+    image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(5).png?raw=true",-35,-37,120,120);
+  if (mouseX >5 && mouseX <40)
+    if (mouseY >5 && mouseY <40)
+    image("https://github.com/chemadehuevo/Descubre-la-programacion/blob/main/IMAGEN/pixil-frame-0%20(6).png?raw=true",-35,-37,120,120);
+    if (mousePressed)
+  if (mouseX >5 && mouseX <40)
+    if (mouseY >5 && mouseY <40)
+    if(mousePressed) {
+    if(mouseButton == RIGHTBUTTON){
+      animate(ejecutar);
+    } } }
