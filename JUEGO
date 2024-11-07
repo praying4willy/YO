@@ -1,0 +1,131 @@
+// Variables de la pelota
+int ballX = 160;
+int ballY = 120;
+int ballSpeedX = 3;
+int ballSpeedY = 2;
+
+// Variables de las palas
+int paddleWidth = 10;
+int paddleHeight = 50;
+
+// Pala izquierda
+int paddleLeftX = 20;
+int paddleLeftY = 100;
+
+// Pala derecha
+int paddleRightX = 290;
+int paddleRightY = 100;
+
+// Puntuación
+int scoreLeft = 0;
+int scoreRight = 0;
+
+void main() {
+    animate(jugar);
+}
+
+void jugar() {
+    fondo();
+    moverPelota();
+    mostrarPelota();
+    mostrarPalas();
+    moverPalas();
+    mostrarPuntaje();
+}
+
+void fondo() {
+    background(0, 0, 0);
+}
+
+void mostrarPelota() {
+    fill(255, 255, 255);
+    ellipse(ballX, ballY, 10, 10);
+}
+
+void moverPelota() {
+    // Movimiento de la pelota
+    ballX += ballSpeedX;
+    ballY += ballSpeedY;
+
+    // Rebote en la parte superior e inferior
+    if (ballY < 0 || ballY > 240) {
+        ballSpeedY = -ballSpeedY;
+    }
+
+    // Rebote en la pala izquierda
+    if (ballX < paddleLeftX + paddleWidth && ballY > paddleLeftY && ballY < paddleLeftY + paddleHeight) {
+        ballSpeedX = -ballSpeedX;
+    }
+
+    // Rebote en la pala derecha
+    if (ballX > paddleRightX - paddleWidth && ballY > paddleRightY && ballY < paddleRightY + paddleHeight) {
+        ballSpeedX = -ballSpeedX;
+    }
+
+    // Si la pelota sale por el lado izquierdo
+    if (ballX < 0) {
+        scoreRight++;
+        reiniciarPelota();
+    }
+
+    // Si la pelota sale por el lado derecho
+    if (ballX > 320) {
+        scoreLeft++;
+        reiniciarPelota();
+    }
+}
+
+void mostrarPalas() {
+    // Mostrar pala izquierda
+    fill(255, 255, 255);
+    rect(paddleLeftX, paddleLeftY, paddleWidth, paddleHeight);
+
+    // Mostrar pala derecha
+    rect(paddleRightX, paddleRightY, paddleWidth, paddleHeight);
+}
+
+void moverPalas() {
+    // Control para la pala izquierda (jugador 1)
+    if (keyPressed && key == "w") {
+        paddleLeftY -= 4;
+    }
+    if (keyPressed && key == "s") {
+        paddleLeftY += 4;
+    }
+
+    // Control para la pala derecha (jugador 2)
+    if (keyPressed && key == "i") {
+        paddleRightY -= 4;
+    }
+    if (keyPressed && key == "k") {
+        paddleRightY += 4;
+    }
+
+    // Limitar movimiento de las palas manualmente
+    if (paddleLeftY < 0) {
+        paddleLeftY = 0;
+    }
+    if (paddleLeftY > 240 - paddleHeight) {
+        paddleLeftY = 240 - paddleHeight;
+    }
+    if (paddleRightY < 0) {
+        paddleRightY = 0;
+    }
+    if (paddleRightY > 240 - paddleHeight) {
+        paddleRightY = 240 - paddleHeight;
+    }
+}
+
+void mostrarPuntaje() {
+    fill(255, 255, 255);
+    text("Jugador 1: " + scoreLeft, 10, 10);
+    text("Jugador 2: " + scoreRight, 220, 10);
+}
+
+void reiniciarPelota() {
+    // Reiniciar la posición y dirección de la pelota al centro
+    ballX = 160;
+    ballY = 120;
+    ballSpeedX = random(2, 4) * (random(0, 1) < 0.5 ? 1 : -1);
+    ballSpeedY = random(2, 3) * (random(0, 1) < 0.5 ? 1 : -1);
+}
